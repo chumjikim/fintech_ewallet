@@ -1,0 +1,39 @@
+<head>
+  <title>walletproject</title>
+</head>
+
+<body>
+
+</body>
+
+<template name="hello">
+</template>
+
+<template name="info">
+  <h1> 계좌정보조회</h1>
+  {{> loginButtons }} 님의 계좌정보입니다.
+  <!-- <div><img src="{{userImage}}" alt=""></div> -->
+  {{#if currentUser}}
+  {{> QRCode text=bitcoinAddressQR size="128px" }}
+  주소 : {{address}} <br>
+  잔고 : {{balance}} <br>
+  거래내역 : {{#each Transactions}}{{this}}<br />{{/each}} <br>
+  {{/if}}
+</template>
+
+<template name="home">
+  {{> Template.dynamic template=content}}
+</template>
+
+<template name="send">
+  <h1>송금하기</h1>
+  <p>송금할 주소를 입력하세요</p>
+  <input id="btcaddress" /><br>
+  <p>금액을 입력하세요</p>
+  <input id="btcvalue" />
+  <button id="btcsend" type="submit">송금하기</button>
+</template>
+
+<template name="send_complete">
+  <p>송금되었습니다</p>
+</template>
